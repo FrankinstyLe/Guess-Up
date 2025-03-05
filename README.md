@@ -21,7 +21,28 @@ The dataset used for Age Predictor is the FairFace Datset. And the labels used t
   - Fairface Dataset: https://github.com/joojs/fairface
   - Fairface Dataset Train & Val Labels, The labels are stored in a google drive created by the book's author. Refer to the github block on importing the data: https://github.com/PacktPublishing/Modern-Computer-Vision-with-PyTorch/blob/master/Chapter05/age_gender_prediction.ipynb
 
-To run the age predictor:
-  - Clone or download the repo.
-  -  Create an python environment, and install the following libraries: PyTorch, OpenCV, Streamlit, OpenCV, ONXX, and ONNX Runtime 
-  -  Activate your python environment and cd into src. Run the command: "streamlit run main.py". The app will open in your default browser.
+## Installation and Running
+
+1. Clone or download the repo
+    ```bash
+    git clone https://github.com/Cougar-AI/CNN-Age-Predictor-App.git
+    ```
+2. Create a Python environment (Python 3.9 recommended)
+   ```bash
+   conda create -n AgePredictor python=3.9
+   conda activate AgePredictor
+   ```
+
+3. Install dependencies from requirements.txt
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Run the application
+    ```bash
+    cd src
+    streamlit run main.py
+    ```
+
+The application will open in your default browser. 
+Feel free to contribute, and build on this project as a baseline!
