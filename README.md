@@ -1,4 +1,4 @@
-# CNN-Age-Predictor-App
+# [Former] CNN-Age-Predictor-App
 
 Welcome to the Cougar AI Spring 2024 Project!
 
