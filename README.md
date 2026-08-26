@@ -74,6 +74,10 @@ honestly. The headline answer is stable because it averages a second of frames;
 the live panel is deliberately single-frame, so you can watch what one frame is
 actually worth. That contrast *is* the lesson.
 
+The kiosk also includes a third lens, **Age**, which estimates apparent age from
+the same webcam face crop. It is an estimate for demonstration purposes, not an
+identity claim or a reliable measure of someone's actual age.
+
 ## Install and run
 
 The kiosk needs **no torch and no torchvision** — detection, embedding and the
@@ -97,6 +101,7 @@ On Windows you can just double-click `run_kiosk.bat`. Useful flags:
 | `--image face.jpg` | run without a camera at all |
 | `--selftest` | verify models, galleries and the embedding math, then exit |
 | `--lens major` | start on the "you look like someone who majors in" lens |
+| `--lens age` | start on the apparent-age lens |
 | `--camera 1` | pick a different webcam |
 | `--camera-backend dshow` | if the default backend misbehaves on your laptop |
 | `--rebuild` | force a gallery re-embed |
@@ -106,7 +111,7 @@ load, that embeddings are L2-normalized, that `cosine(x, x) == 1`, that each
 image matches itself best, and that no two people collide above the same-person
 threshold — which is how you catch the same person accidentally added twice.
 
-At the kiosk: `SPACE` reveal / back · `R` reset · `1` `2` switch lens ·
+At the kiosk: `SPACE` reveal / back · `R` reset · `1` `2` `3` switch lens ·
 `F` match immediately · `Q` quit.
 
 ## How it works
@@ -118,7 +123,13 @@ webcam frame
   -> ArcFace w600k_r50          512-d embedding, L2-normalized
   -> average over ~12 frames    one stable probe per visitor
   -> cosine vs gallery matrix   one matrix-vector multiply
-  -> top 3
+  -> top 3 matches
+
+For the Age lens, the same detected face is padded for context and sent through
+the bundled age model in three views: normal, mirrored, and slightly brightened.
+The kiosk takes their median and then applies a rolling median across frames.
+Small or blurry face crops are ignored so one poor camera frame cannot move the
+result as much.
 ```
 
 Because the probe and the gallery rows are both L2-normalized, cosine similarity
@@ -143,6 +154,7 @@ Three implementation notes that matter if you touch this:
 |---|---|---|
 | `face_detection_yunet_2023mar.onnx` | 0.2 MB | detection + 5 landmarks |
 | `w600k_r50.onnx` | 166 MB | 512-d face embedding |
+| `../weights/age_predictor.onnx` | 36 MB | apparent-age estimate |
 
 `w600k_mbf.onnx` (13 MB) is a supported fallback if the big download is
 impractical — `embedder.py` takes whichever is present, best first. r50 is the
@@ -173,19 +185,25 @@ an optional `meta.json` giving each face a display name, a blurb, a field of
 study and a credit. The embedding cache invalidates itself when you add or swap
 a photo.
 
-A **lens** is a way of *labelling* a gallery, not a second set of photos. Press
-`1` / `2` at the kiosk to switch. A lens can draw on several galleries, which it
-ranks as one pool without duplicating any image files:
+A **lens** is either a way of *labelling* a gallery or a separate analysis of the
+detected face. Press `1`, `2`, or `3` at the kiosk to switch. Gallery lenses can
+draw on several galleries, which they rank as one pool without duplicating image
+files:
 
 | Lens | Headline | Big line | Small line |
 |---|---|---|---|
 | `pioneer` | "you look like" | Grace Hopper | her one-line blurb |
 | `major` | "you look like someone who majors in" | Anthropology | Yo-Yo Ma |
+| `age` | "estimated age" | 27 years old | an estimate, not an identity |
 
-Both lenses rank against the **same 58-face pool**, so the person behind the
+The first two lenses rank against the **same 58-face pool**, so the person behind the
 answer is identical either way — one lens shows their name, the other shows their
 major. Pointing the lenses at different pools makes them disagree about who you
 look like, which reads as a bug.
+
+The `age` lens does not use the gallery. It runs the existing MobileNet-based
+ONNX age model locally and smooths several augmented views and camera frames for
+a steadier result. No photo is saved.
 
 The `major` lens is how you get a harmless "what do you look like you study?"
 guess **without needing photos of real students**. Everyone in the pool genuinely
