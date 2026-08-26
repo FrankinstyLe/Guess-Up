@@ -1,0 +1,128 @@
+[
+  {
+    "file": "alan_turing.jpg",
+    "name": "Alan Turing",
+    "blurb": "Defined what a computer even is, in 1936.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics"
+  },
+  {
+    "file": "ada_lovelace.png",
+    "name": "Ada Lovelace",
+    "blurb": "Wrote the first algorithm, a century before the first computer.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics"
+  },
+  {
+    "file": "grace_hopper.jpg",
+    "name": "Grace Hopper",
+    "blurb": "Built the first compiler. Popularized the word \"bug\".",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics & Physics"
+  },
+  {
+    "file": "frank_rosenblatt.jpg",
+    "name": "Frank Rosenblatt",
+    "blurb": "Built the perceptron in 1958 -- that is week 1 of our workshop.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Psychology"
+  },
+  {
+    "file": "claude_shannon.jpg",
+    "name": "Claude Shannon",
+    "blurb": "Invented information theory. Everything digital rests on it.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Electrical Engineering"
+  },
+  {
+    "file": "john_mccarthy.jpg",
+    "name": "John McCarthy",
+    "blurb": "Coined the term \"artificial intelligence\" in 1955.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics"
+  },
+  {
+    "file": "marvin_minsky.jpg",
+    "name": "Marvin Minsky",
+    "blurb": "Co-founded the MIT AI Lab. Wrote the book that paused neural nets.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics"
+  },
+  {
+    "file": "geoffrey_hinton.jpg",
+    "name": "Geoffrey Hinton",
+    "blurb": "Made backpropagation work. Nobel Prize, 2024.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Experimental Psychology"
+  },
+  {
+    "file": "yann_lecun.jpg",
+    "name": "Yann LeCun",
+    "blurb": "Invented the convolutional neural network this very app runs on.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Electrical Engineering"
+  },
+  {
+    "file": "yoshua_bengio.jpg",
+    "name": "Yoshua Bengio",
+    "blurb": "Shared the Turing Award for deep learning.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Computer Engineering"
+  },
+  {
+    "file": "fei_fei_li.jpg",
+    "name": "Fei-Fei Li",
+    "blurb": "Built ImageNet -- the dataset our backbone was pretrained on.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Physics"
+  },
+  {
+    "file": "andrew_ng.jpg",
+    "name": "Andrew Ng",
+    "blurb": "Taught machine learning to millions of people online.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Computer Science"
+  },
+  {
+    "file": "timnit_gebru.jpg",
+    "name": "Timnit Gebru",
+    "blurb": "Exposed how large AI models encode bias, and paid for it.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Electrical Engineering"
+  },
+  {
+    "file": "joy_buolamwini.jpg",
+    "name": "Joy Buolamwini",
+    "blurb": "Proved face recognition fails on dark and female faces. Ask us about this one.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Computer Science"
+  },
+  {
+    "file": "demis_hassabis.jpg",
+    "name": "Demis Hassabis",
+    "blurb": "AlphaGo, then AlphaFold. Nobel Prize, 2024.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Computer Science"
+  },
+  {
+    "file": "judea_pearl.jpg",
+    "name": "Judea Pearl",
+    "blurb": "Gave AI a mathematics of cause and effect.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Electrical Engineering"
+  },
+  {
+    "file": "katie_bouman.jpg",
+    "name": "Katie Bouman",
+    "blurb": "Wrote the imaging algorithm that photographed a black hole.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Electrical Engineering"
+  },
+  {
+    "file": "cynthia_breazeal.jpg",
+    "name": "Cynthia Breazeal",
+    "blurb": "Pioneered robots that read human social cues.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Electrical Engineering"
+  }
+]

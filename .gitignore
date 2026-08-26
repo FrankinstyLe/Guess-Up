@@ -161,3 +161,9 @@ cython_debug/
 
 # Dataset
 data/
+# Fair kiosk: models and caches are regenerable, so keep them out of git.
+# Run scripts/fetch_models.py and scripts/build_gallery.py to recreate them.
+# The gallery portraits themselves ARE committed -- Wikimedia rate-limits the
+# seeding script, so a fresh clone should not depend on it succeeding.
+src/face_match_kiosk/weights/*.onnx
+src/face_match_kiosk/gallery_embeddings.npz

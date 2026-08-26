@@ -1,0 +1,289 @@
+[
+  {
+    "file": "jim_parsons.jpg",
+    "name": "Jim Parsons",
+    "blurb": "UH class of 1996. Twelve years as Sheldon Cooper.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Theatre"
+  },
+  {
+    "file": "brene_brown.jpg",
+    "name": "Brené Brown",
+    "blurb": "Three UH degrees. Her TED talk on vulnerability has ~60 million views.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Social Work"
+  },
+  {
+    "file": "dennis_quaid.jpg",
+    "name": "Dennis Quaid",
+    "blurb": "Houston born, studied drama at UH before leaving for Hollywood.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Drama"
+  },
+  {
+    "file": "barack_obama.jpg",
+    "name": "Barack Obama",
+    "blurb": "Majored in political science, then became president.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Political Science"
+  },
+  {
+    "file": "michelle_obama.jpg",
+    "name": "Michelle Obama",
+    "blurb": "Sociology at Princeton, then Harvard Law.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Sociology"
+  },
+  {
+    "file": "sonia_sotomayor.jpg",
+    "name": "Sonia Sotomayor",
+    "blurb": "Read history, now sits on the Supreme Court.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "History"
+  },
+  {
+    "file": "ruth_bader_ginsburg.jpg",
+    "name": "Ruth Bader Ginsburg",
+    "blurb": "Government major who rewrote a lot of American law.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Government"
+  },
+  {
+    "file": "thurgood_marshall.jpg",
+    "name": "Thurgood Marshall",
+    "blurb": "Literature and philosophy, then Brown v. Board of Education.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Literature & Philosophy"
+  },
+  {
+    "file": "toni_morrison.jpg",
+    "name": "Toni Morrison",
+    "blurb": "English major. Nobel Prize in Literature.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "English"
+  },
+  {
+    "file": "sandra_cisneros.jpg",
+    "name": "Sandra Cisneros",
+    "blurb": "English major from Chicago; wrote The House on Mango Street.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "English"
+  },
+  {
+    "file": "gloria_steinem.jpg",
+    "name": "Gloria Steinem",
+    "blurb": "Government major who spent a lifetime organising.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Government"
+  },
+  {
+    "file": "dolores_huerta.png",
+    "name": "Dolores Huerta",
+    "blurb": "Trained as a teacher, then co-founded the United Farm Workers.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Education"
+  },
+  {
+    "file": "martin_luther_king.jpg",
+    "name": "Martin Luther King Jr.",
+    "blurb": "Sociology at Morehouse, aged fifteen.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Sociology"
+  },
+  {
+    "file": "amanda_gorman.jpg",
+    "name": "Amanda Gorman",
+    "blurb": "Sociology major. Read her poem at a presidential inauguration at 22.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Sociology"
+  },
+  {
+    "file": "chimamanda_adichie.png",
+    "name": "Chimamanda Ngozi Adichie",
+    "blurb": "Communications and political science; now one of the great novelists.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Communications"
+  },
+  {
+    "file": "bruce_lee.jpg",
+    "name": "Bruce Lee",
+    "blurb": "Read philosophy at the University of Washington. Genuinely.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Philosophy"
+  },
+  {
+    "file": "harrison_ford.jpg",
+    "name": "Harrison Ford",
+    "blurb": "Philosophy major. Did not graduate. Did fine anyway.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Philosophy"
+  },
+  {
+    "file": "steve_martin.jpg",
+    "name": "Steve Martin",
+    "blurb": "Philosophy major; nearly became a professor instead of a comedian.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Philosophy"
+  },
+  {
+    "file": "yo_yo_ma.jpg",
+    "name": "Yo-Yo Ma",
+    "blurb": "Anthropology at Harvard, not a music conservatory.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Anthropology"
+  },
+  {
+    "file": "natalie_portman.jpg",
+    "name": "Natalie Portman",
+    "blurb": "Psychology at Harvard, with published research.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Psychology"
+  },
+  {
+    "file": "oprah_winfrey.jpg",
+    "name": "Oprah Winfrey",
+    "blurb": "Speech communications major at Tennessee State.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Communications"
+  },
+  {
+    "file": "christiane_amanpour.jpg",
+    "name": "Christiane Amanpour",
+    "blurb": "Journalism major who became the person you see in war zones.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Journalism"
+  },
+  {
+    "file": "anderson_cooper.jpg",
+    "name": "Anderson Cooper",
+    "blurb": "Political science major turned correspondent.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Political Science"
+  },
+  {
+    "file": "meryl_streep.jpg",
+    "name": "Meryl Streep",
+    "blurb": "Drama major. Most Oscar nominations in history.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Drama"
+  },
+  {
+    "file": "viola_davis.jpg",
+    "name": "Viola Davis",
+    "blurb": "Theatre major; EGOT holder.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Theatre"
+  },
+  {
+    "file": "lupita_nyongo.jpg",
+    "name": "Lupita Nyong'o",
+    "blurb": "Film and theatre studies, then an Academy Award.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Film & Theatre"
+  },
+  {
+    "file": "john_legend.jpg",
+    "name": "John Legend",
+    "blurb": "English major with an emphasis in African American literature.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "English"
+  },
+  {
+    "file": "philip_glass.jpg",
+    "name": "Philip Glass",
+    "blurb": "Maths and philosophy at Chicago, at sixteen, before the music.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics & Philosophy"
+  },
+  {
+    "file": "maya_lin.png",
+    "name": "Maya Lin",
+    "blurb": "Designed the Vietnam Veterans Memorial as an undergraduate.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Architecture"
+  },
+  {
+    "file": "weird_al_yankovic.jpg",
+    "name": "Weird Al Yankovic",
+    "blurb": "Architecture major at Cal Poly. Chose accordions instead.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Architecture"
+  },
+  {
+    "file": "zaha_hadid.jpg",
+    "name": "Zaha Hadid",
+    "blurb": "Read maths in Beirut before becoming the architect everyone copies.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Mathematics"
+  },
+  {
+    "file": "kehinde_wiley.jpg",
+    "name": "Kehinde Wiley",
+    "blurb": "Painting major; painted the official Obama portrait.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Art"
+  },
+  {
+    "file": "warren_buffett.jpg",
+    "name": "Warren Buffett",
+    "blurb": "Business administration major from Nebraska.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Business Administration"
+  },
+  {
+    "file": "howard_schultz.jpg",
+    "name": "Howard Schultz",
+    "blurb": "Communications major who turned a coffee shop into Starbucks.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Communications"
+  },
+  {
+    "file": "anthony_bourdain.jpg",
+    "name": "Anthony Bourdain",
+    "blurb": "Culinary school after dropping out of Vassar.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Culinary Arts"
+  },
+  {
+    "file": "julia_child.jpg",
+    "name": "Julia Child",
+    "blurb": "English major at Smith. Learned to cook much later.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "English"
+  },
+  {
+    "file": "rachel_carson.jpg",
+    "name": "Rachel Carson",
+    "blurb": "Biology major whose book started the environmental movement.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Biology"
+  },
+  {
+    "file": "ellen_ochoa.jpg",
+    "name": "Ellen Ochoa",
+    "blurb": "Physics major; first Hispanic woman in space.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Physics"
+  },
+  {
+    "file": "mae_jemison.jpg",
+    "name": "Mae Jemison",
+    "blurb": "Chemical engineering and African American studies, then space.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Chemical Engineering"
+  },
+  {
+    "file": "ken_jeong.jpg",
+    "name": "Ken Jeong",
+    "blurb": "A licensed physician who left medicine for comedy.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Pre-Med / Biology"
+  },
+  {
+    "file": "lisa_kudrow.jpg",
+    "name": "Lisa Kudrow",
+    "blurb": "Biology major who researched headaches before Friends.",
+    "credit": "Wikimedia Commons via en.wikipedia.org",
+    "major": "Biology"
+  }
+]

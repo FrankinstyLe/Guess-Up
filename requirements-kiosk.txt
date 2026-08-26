@@ -1,0 +1,15 @@
+# Dependencies for the fair kiosk (src/face_match_kiosk).
+#
+# Deliberately NOT the same as requirements.txt: the kiosk does inference
+# through onnxruntime only, so it does not need torch or torchvision. That drops
+# the install from ~2.5 GB to ~90 MB, which is the difference between a fair
+# laptop you can set up the night before and one you cannot.
+#
+# Unpinned on purpose -- the original requirements.txt pins a 2024 stack that no
+# longer resolves on a current Python, and this needs to install on whatever
+# laptop is available. Verified on Python 3.13 with the versions in the comments.
+
+numpy>=1.26          # tested: 2.3.5
+opencv-python>=4.8   # tested: 4.13.0  (needs >=4.5.4 for cv2.FaceDetectorYN)
+onnxruntime>=1.16    # tested: 1.29.0
+pillow>=10.0         # tested: 12.0.0
