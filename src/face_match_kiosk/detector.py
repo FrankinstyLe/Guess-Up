@@ -27,6 +27,7 @@ from face_match_kiosk.configs import (
     DETECTOR_TOP_K,
     DETECT_MAX_WIDTH,
     EMBED_INPUT_SIZE,
+    AGE_INPUT_SIZE,
 )
 
 
@@ -179,3 +180,15 @@ class FaceDetector:
 
         return cv2.resize(crop, (EMBED_INPUT_SIZE, EMBED_INPUT_SIZE),
                           interpolation=cv2.INTER_AREA)
+
+    def crop_for_age(self, frame, face):
+        """Crop a little context around the face for the age model."""
+        height, width = frame.shape[:2]
+        pad = int(0.15 * max(face.w, face.h))
+        x0 = max(0, face.x - pad)
+        y0 = max(0, face.y - pad)
+        x1 = min(width, face.x + face.w + pad)
+        y1 = min(height, face.y + face.h + pad)
+        crop = frame[y0:y1, x0:x1]
+        return crop if crop.size else np.zeros(
+            (AGE_INPUT_SIZE[1], AGE_INPUT_SIZE[0], 3), dtype=np.uint8)

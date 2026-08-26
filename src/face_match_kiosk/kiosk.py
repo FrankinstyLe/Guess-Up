@@ -48,6 +48,8 @@ from face_match_kiosk.configs import (
     SAME_PERSON_THRESHOLD,
     TOP_K,
     PROBE_FRAMES,
+    AGE_MIN_FACE_SIZE,
+    AGE_MIN_SHARPNESS,
     COLOR_TEXT,
     COLOR_DIM,
     COLOR_ACCENT,
@@ -63,9 +65,10 @@ ATTRACT, LOCKING, MATCH, REVEAL = 'attract', 'locking', 'match', 'reveal'
 
 class Kiosk:
 
-    def __init__(self, detector, embedder, galleries, args):
+    def __init__(self, detector, embedder, age_predictor, galleries, args):
         self.detector = detector
         self.embedder = embedder
+        self.age_predictor = age_predictor
         self.galleries = galleries
         self.args = args
 
@@ -98,6 +101,8 @@ class Kiosk:
         self.frozen_frame = None
         self.frozen_crop = None
         self.matches = []
+        self.age_prediction = None
+        self.age_samples = deque(maxlen=PROBE_FRAMES)
         self.sensitivity = None
         self.heat_overlay = None
         self.peak = ''
@@ -123,6 +128,8 @@ class Kiosk:
 
     def _lens_names(self, lens):
         """Gallery folder(s) a lens draws on."""
+        if lens.get('mode') == 'age':
+            return []
         return lens.get('galleries') or [lens['gallery']]
 
     def _pool(self, lens):
@@ -135,6 +142,9 @@ class Kiosk:
 
     def _lens_usable(self, lens):
         """A lens needs a non-empty pool whose entries carry its label."""
+        if lens.get('mode') == 'age':
+            return self.age_predictor is not None
+
         pool = self._pool(lens)
         if pool is None or len(pool) == 0:
             return False
@@ -272,6 +282,7 @@ class Kiosk:
         if self.state == ATTRACT:
             if face is not None:
                 self.probe_samples.clear()
+                self.age_samples.clear()
                 self._go(LOCKING)
 
         elif self.state == LOCKING:
@@ -280,7 +291,10 @@ class Kiosk:
             else:
                 # Keep the rolling window warm, but do not advance on our own --
                 # the student decides when the photo is taken, by pressing SPACE.
-                self._sample_probe(frame, face)
+                if self.lens.get('mode') == 'age':
+                    self._sample_age(frame, face)
+                else:
+                    self._sample_probe(frame, face)
 
         elif self.state == MATCH:
             if self.elapsed >= MATCH_IDLE_TIMEOUT_SECONDS:
@@ -298,6 +312,18 @@ class Kiosk:
         self.probe_samples.append(
             self.embedder.embed(self.detector.align(frame, face)))
 
+    def _sample_age(self, frame, face):
+        if face is not None and self._age_frame_usable(frame, face):
+            self.age_samples.append(
+                self.age_predictor.predict(self.detector.crop_for_age(frame, face)))
+
+    def _age_frame_usable(self, frame, face):
+        """Avoid adding tiny or blurry frames to the stable age estimate."""
+        if min(face.w, face.h) < AGE_MIN_FACE_SIZE:
+            return False
+        gray = cv2.cvtColor(self.detector.crop_for_age(frame, face), cv2.COLOR_BGR2GRAY)
+        return float(cv2.Laplacian(gray, cv2.CV_64F).var()) >= AGE_MIN_SHARPNESS
+
     def _probe_embedding(self, crop):
         """Mean of the countdown samples, re-normalized. Falls back to one frame."""
         if not self.probe_samples:
@@ -307,6 +333,16 @@ class Kiosk:
     def _capture_match(self, frame, face):
         """Freeze the frame and rank the averaged probe against the pool."""
         self.frozen_frame = frame.copy()
+        if self.lens.get('mode') == 'age':
+            self.frozen_crop = self.detector.crop_for_age(frame, face)
+            self._sample_age(frame, face)
+            if not self.age_samples:
+                self.age_samples.append(self.age_predictor.predict(self.frozen_crop))
+            self.age_prediction = float(np.median(self.age_samples))
+            self.matches = []
+            self.live_matches = []
+            return
+
         self.frozen_crop = self.detector.align(frame, face)
 
         self._sample_probe(frame, face)
@@ -397,10 +433,13 @@ class Kiosk:
                 # lenses over the same gallery give identical scores, so this is
                 # only real work when the gallery differs.
                 if self.frozen_crop is not None and self.state in (MATCH, REVEAL):
-                    probe = getattr(self, 'probe', None)
-                    if probe is None:
-                        probe = self._probe_embedding(self.frozen_crop)
-                    self.matches = matcher.top_k(probe, self.gallery, TOP_K)
+                    if self.lens.get('mode') == 'age':
+                        self.age_prediction = self.age_predictor.predict(
+                            self.frozen_crop)
+                        self.matches = []
+                    else:
+                        probe = self.embedder.embed(self.frozen_crop)
+                        self.matches = matcher.top_k(probe, self.gallery, TOP_K)
                     self.live_matches = []
                     self._go(MATCH)
 
@@ -530,6 +569,9 @@ class Kiosk:
     # -- MATCH
 
     def _base_match(self):
+        if self.lens.get('mode') == 'age':
+            return render.scrim(self.frozen_frame, alpha=0.48), {}
+
         if not self.matches:
             return render.scrim(self.frozen_frame, alpha=0.5), {}
 
@@ -567,6 +609,20 @@ class Kiosk:
         }
 
     def _text_match(self, painter, shape, layout):
+        if self.lens.get('mode') == 'age':
+            height, width = shape[:2]
+            painter.text('estimated age', (width // 2, int(height * 0.30)),
+                         size=int(height * 0.055), color=COLOR_DIM, anchor='mm')
+            painter.text('%d' % round(self.age_prediction),
+                         (width // 2, int(height * 0.50)),
+                         size=int(height * 0.22), color=COLOR_UH_RED, anchor='mm')
+            painter.text('years old', (width // 2, int(height * 0.68)),
+                         size=int(height * 0.055), color=COLOR_TEXT, anchor='mm')
+            painter.text('an estimate, not an identity',
+                         (width // 2, int(height * 0.79)),
+                         size=int(height * 0.032), color=COLOR_AMBER, anchor='mm')
+            return
+
         if not self.matches or not layout:
             return
 

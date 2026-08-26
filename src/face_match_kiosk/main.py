@@ -28,6 +28,7 @@ from face_match_kiosk.configs import (
 )
 from face_match_kiosk.detector import FaceDetector
 from face_match_kiosk.embedder import Embedder
+from face_match_kiosk.age_predictor import AgePredictor
 from face_match_kiosk.kiosk import Kiosk
 
 
@@ -175,13 +176,14 @@ def main(argv=None):
 
     detector = FaceDetector()
     embedder = Embedder()
+    age_predictor = AgePredictor()
 
     if args.rebuild:
         galleries = gallery_module.build_all(detector, embedder, verbose=True)
     else:
         galleries = gallery_module.load_all(detector, embedder, verbose=True)
 
-    Kiosk(detector, embedder, galleries, args).run()
+    Kiosk(detector, embedder, age_predictor, galleries, args).run()
     return 0
 
 

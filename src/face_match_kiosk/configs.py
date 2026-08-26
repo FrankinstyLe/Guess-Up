@@ -38,11 +38,16 @@ GALLERIES_DIR = os.path.join(PACKAGE_DIR, 'galleries')
 GALLERY_CACHE_PATH = os.path.join(PACKAGE_DIR, 'gallery_embeddings.npz')
 
 LOGO_PATH = os.path.join(SRC_DIR, 'misc', 'cougar_ai_logo.png')
+AGE_PREDICTOR_ONNX_PATH = os.path.join(SRC_DIR, 'weights', 'age_predictor.onnx')
 
 
 # ---------------------------------------------------------------- galleries
 
 GALLERY_ORDER = ['scientists', 'people', 'uh_majors']
+
+AGE_INPUT_SIZE = (244, 244)
+AGE_MIN_FACE_SIZE = 90
+AGE_MIN_SHARPNESS = 18.0
 
 MIN_GALLERY_ENTRIES = 8
 
@@ -90,6 +95,12 @@ LENSES = [
         'headline': 'you look like someone who majors in',
         'primary': 'major',
         'secondary': 'name',
+    },
+    {
+        'key': 'age',
+        'menu': 'age',
+        'title': 'How old do you look?',
+        'mode': 'age',
     },
 ]
 
