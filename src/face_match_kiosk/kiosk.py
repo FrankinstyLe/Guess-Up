@@ -525,17 +525,7 @@ class Kiosk:
         return canvas, {}
 
     def _text_locking(self, painter, shape, layout):
-        height, width = shape[:2]
-
-        # Pulse the prompt so it reads as "waiting for you" rather than frozen.
-        pulse = 0.5 + 0.5 * np.sin(time.monotonic() * 3.2)
-        shade = int(150 + 105 * pulse)
-
-        painter.text('press SPACE', (width // 2, int(height * 0.44)),
-                     size=int(height * 0.15), color=(shade, shade, shade),
-                     anchor='mm')
-        painter.text('to take the photo', (width // 2, int(height * 0.60)),
-                     size=int(height * 0.050), color=COLOR_ACCENT, anchor='mm')
+        return
 
     # -- MATCH
 
