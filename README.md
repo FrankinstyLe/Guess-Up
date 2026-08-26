@@ -60,11 +60,7 @@ stranger takes one photo, gets one number that is often off by six years, and
 walks away. Nothing they did, and nothing learned. This runs in two acts instead.
 
 **Act 1 — the hook.** Your face is embedded and matched by cosine similarity
-against a pool of 58 notable people. You get a confident, fun answer — either
-*you look like Grace Hopper*, or, on the second lens, *you look like someone who
-majors in Anthropology*. Both only ever claim resemblance to a person in the
-gallery, never a fact about you.
-
+against a pool of 58 notable people. You get a confident, fun answer.
 **Act 2 — the reveal.** Press `SPACE`. The same three scores come back nearly
 tied, every one of them far below the threshold a real face-ID system needs to
 call two photos the same person. A heatmap shows which pixels actually moved the
