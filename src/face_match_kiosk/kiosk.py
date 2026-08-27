@@ -332,6 +332,9 @@ class Kiosk:
 
     def _capture_match(self, frame, face):
         """Freeze the frame and rank the averaged probe against the pool."""
+        if self._heat_thread is not None and self._heat_thread.is_alive():
+            self._heat_thread.join()
+
         self.frozen_frame = frame.copy()
         if self.lens.get('mode') == 'age':
             self.frozen_crop = self.detector.crop_for_age(frame, face)
@@ -361,9 +364,13 @@ class Kiosk:
     def _start_heatmap(self, crop):
         """Kick off the occlusion heatmap on a worker thread."""
         def work(target):
-            sensitivity = occlusion.sensitivity_map(target, self.embedder)
-            overlay = occlusion.heatmap_overlay(target, sensitivity)
-            peak = occlusion.peak_region(sensitivity)
+            try:
+                sensitivity = occlusion.sensitivity_map(target, self.embedder)
+                overlay = occlusion.heatmap_overlay(target, sensitivity)
+                peak = occlusion.peak_region(sensitivity)
+            except Exception as error:
+                print('Heatmap failed: %s' % error)
+                return
 
             with self._heat_lock:
                 # Drop the result if the student already walked off and a new
@@ -540,13 +547,14 @@ class Kiosk:
 
         # Cycle gallery names as a teaser. Deliberately NOT past visitors'
         # results -- nothing about a visitor outlives their turn.
-        entries = self.gallery.entries
-        if entries:
-            self.teaser_index = int(time.monotonic() / 1.6) % len(entries)
-            painter.text('today: %s' % self._label(entries[self.teaser_index],
-                                                   'primary'),
-                         (width // 2, int(height * 0.68)),
-                         size=int(height * 0.042), color=COLOR_ACCENT, anchor='mm')
+        if self.lens.get('mode') != 'age':
+            entries = self.gallery.entries
+            if entries:
+                self.teaser_index = int(time.monotonic() / 1.6) % len(entries)
+                painter.text('today: %s' % self._label(entries[self.teaser_index],
+                                                       'primary'),
+                             (width // 2, int(height * 0.68)),
+                             size=int(height * 0.042), color=COLOR_ACCENT, anchor='mm')
 
         painter.text(self._title_for_lens(),
                      (width // 2, int(height * 0.79)),
